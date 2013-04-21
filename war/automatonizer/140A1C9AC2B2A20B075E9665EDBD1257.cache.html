@@ -1,0 +1,58 @@
+<html><head><meta charset="UTF-8" /><script>var $gwt_version = "2.5.1";var $wnd = parent;var $doc = $wnd.document;var $moduleName, $moduleBase;var $strongName = '140A1C9AC2B2A20B075E9665EDBD1257';var $stats = $wnd.__gwtStatsEvent ? function(a) {return $wnd.__gwtStatsEvent(a);} : null,$sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;$stats && $stats({moduleName:'automatonizer',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalStart'});</script></head><body><script><!--
+function t(){}
+function R(){}
+function Z(){}
+function ic(){}
+function ab(){}
+function Ub(){}
+function dc(a){}
+function bc(){Y()}
+function _b(){Y()}
+function p(a){this.a=a}
+function O(){O=ic;N=new R}
+function Pb(a){return new Nb[a]}
+function gc(b,a){return b.indexOf(a)}
+function lb(a,b){return a!=null&&jb(a,b)}
+function jb(a,b){return a.cM&&!!a.cM[b]}
+function F(a,b,c){return a.apply(b,c);var d}
+function A(a){Y();this.a=a;X(this)}
+function K(a){$wnd.clearTimeout(a)}
+function Yb(a){return typeof a=='number'&&a>0}
+function mb(a){return a!=null&&a.tM!=ic&&!jb(a,1)}
+function Xb(a){var b=Nb[a.a];a=null;return b}
+function S(a,b){!a&&(a=[]);a[a.length]=b;return a}
+function Wb(a,b,c){var d;d=new Ub;Yb(c)&&Zb(c,d);return d}
+function cb(a,b,c,d,e){var f;f=bb(e,d);db(a,b,c,f);return f}
+function db(a,b,c,d){gb();ib(d,eb,fb);d.cZ=a;d.cM=b;return d}
+function gb(){gb=ic;eb=[];fb=[];hb(new ab,eb,fb)}
+function Lb(a){if(lb(a,2)){return a}return new A(a)}
+function fc(a,b){if(b==null){return false}return String(a)==b}
+function I(a,b,c){var d;d=G();try{return F(a,b,c)}finally{J(d)}}
+function hb(a,b,c){var d=0,e;for(var f in a){if(e=a[f]){b[d]=f;c[d]=e;++d}}}
+function ib(a,b,c){gb();for(var d=0,e=b.length;d<e;++d){a[b[d]]=c[d]}}
+function J(a){a&&Q((O(),N));--C;if(a){if(E!=-1){K(E);E=-1}}}
+function L(){return $wnd.setTimeout(function(){C!=0&&(C=0);E=-1},10)}
+function kb(a){if(a!=null&&(a.tM==ic||jb(a,1))){throw new _b}return a}
+function Vb(a,b,c){var d;d=new Ub;Yb(c!=0?-c:0)&&Zb(c!=0?-c:0,d);return d}
+function Q(a){var b,c;if(a.b){c=null;do{b=a.b;a.b=null;c=T(b,c)}while(a.b);a.b=c}}
+function P(a){var b,c;if(a.a){c=null;do{b=a.a;a.a=null;c=T(b,c)}while(a.a);a.a=c}}
+function H(b){return function(){try{return I(b,this,arguments)}catch(a){throw a}}}
+function gwtOnLoad(b,c,d,e){$moduleName=c;$moduleBase=d;if(b)try{lc(Kb)()}catch(a){b(c)}else{lc(Kb)()}}
+function Y(){var a,b,c,d;c=W(new Z);d=cb(Ib,jc,0,c.length,0);for(a=0,b=d.length;a<b;++a){d[a]=new dc(c[a])}z(d)}
+function X(a){var b,c,d,e;d=(mb(a.a)?kb(a.a):null,[]);e=cb(Ib,jc,0,d.length,0);for(b=0,c=e.length;b<c;++b){e[b]=new dc(d[b])}z(e)}
+function z(a){var b,c,d;c=cb(Ib,jc,0,a.length,0);for(d=0,b=a.length;d<b;++d){if(!a[d]){throw new bc}c[d]=a[d]}}
+function q(){var a;!o&&(o=new t);a=$doc.createElement('canvas');if(!a.getContext){return null}return new p(a)}
+function G(){var a;if(C!=0){a=(new Date).getTime();if(a-D>2000){D=a;E=L()}}if(C++==0){P((O(),N));return true}return false}
+function hc(c){if(c.length==0||c[0]>rc&&c[c.length-1]>rc){return c}var a=c.replace(/^(\s*)/,mc);var b=a.replace(/\s*$/,mc);return b}
+function T(b,c){var d,e,f;for(d=0,e=b.length;d<e;++d){f=b[d];try{f[1]?f[0].d()&&(c=S(c,f)):f[0].d()}catch(a){a=Lb(a);if(!lb(a,2))throw a}}return c}
+function Zb(a,b){var c;b.a=a;if(a==2){c=String.prototype}else{if(a>0){var d=Xb(b);if(d){c=d.prototype}else{d=Nb[a]=function(){};d.cZ=b;return}}else{return}}c.cZ=b}
+function bb(a,b){var c=new Array(b);if(a==3){for(var d=0;d<b;++d){var e=new Object;e.l=e.m=e.h=0;c[d]=e}}else if(a>0){var e=[null,0,false][a];for(var d=0;d<b;++d){c[d]=e}}return c}
+function Qb(a){return $stats({moduleName:$moduleName,sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date).getTime(),type:'onModuleLoadStart',className:a})}
+function Ob(a,b,c){var d=Nb[a];if(d&&!d.cZ){_=d.prototype}else{!d&&(d=Nb[a]=function(){});_=d.prototype=b<0?{}:Pb(b);_.cM=c}for(var e=3;e<arguments.length;++e){arguments[e].prototype=_}if(d.cZ){_.cZ=d.cZ;d.cZ=null}}
+function U(a){var b,c,d;d=mc;a=hc(a);b=a.indexOf('(');c=a.indexOf('function')==0?8:0;if(b==-1){b=gc(a,String.fromCharCode(64));c=a.indexOf('function ')==0?9:0}b!=-1&&(d=hc(a.substr(c,b-c)));return d.length>0?d:'anonymous'}
+function W(i){var a={};var b=[];var c=arguments.callee.caller.caller;while(c){var d=i.c(c.toString());b.push(d);var e=':'+d;var f=a[e];if(f){var g,h;for(g=0,h=f.length;g<h;g++){if(f[g]===c){return b}}}(f||(a[e]=[])).push(c);c=c.caller}return b}
+function Kb(){var a,b;!!$stats&&Qb('com.google.gwt.useragent.client.UserAgentAsserter');a=Sb();fc(nc,a)||($wnd.alert('ERROR: Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value ('+a+'). Expect more errors.\n'),undefined);!!$stats&&Qb('com.google.gwt.user.client.DocumentModeAsserter');Rb();!!$stats&&Qb('com.automatonizer.client.Automatonizer');b=q();b.a.getContext('2d')}
+function Sb(){var b=navigator.userAgent.toLowerCase();var c=function(a){return parseInt(a[1])*1000+parseInt(a[2])};if(function(){return b.indexOf(pc)!=-1}())return pc;if(function(){return b.indexOf('webkit')!=-1}())return 'safari';if(function(){return b.indexOf(qc)!=-1&&$doc.documentMode>=9}())return nc;if(function(){return b.indexOf(qc)!=-1&&$doc.documentMode>=8}())return 'ie8';if(function(){var a=/msie ([0-9]+)\.([0-9]+)/.exec(b);if(a&&a.length==3)return c(a)>=6000}())return 'ie6';if(function(){return b.indexOf('gecko')!=-1}())return 'gecko1_8';return 'unknown'}
+function Rb(){var a,b,c;b=$doc.compatMode;a=db(Jb,jc,1,[oc]);for(c=0;c<a.length;++c){if(fc(a[c],b)){return}}a.length==1&&fc(oc,a[0])&&fc('BackCompat',b)?"GWT no longer supports Quirks Mode (document.compatMode=' BackCompat').<br>Make sure your application's host HTML page has a Standards Mode (document.compatMode=' CSS1Compat') doctype,<br>e.g. by using &lt;!doctype html&gt; at the start of your application's HTML page.<br><br>To continue using this unsupported rendering mode and risk layout problems, suppress this message by adding<br>the following line to your*.gwt.xml module file:<br>&nbsp;&nbsp;&lt;extend-configuration-property name=\"document.compatMode\" value=\""+b+'"/&gt;':"Your *.gwt.xml module configuration prohibits the use of the current doucment rendering mode (document.compatMode=' "+b+"').<br>Modify your application's host HTML page doctype, or update your custom 'document.compatMode' configuration property settings."}
+var mc='',rc=' ',oc='CSS1Compat',uc='[Ljava.lang.',wc='com.google.gwt.canvas.client.',tc='com.google.gwt.core.client.',xc='com.google.gwt.core.client.impl.',vc='com.google.gwt.user.client.ui.',nc='ie9',sc='java.lang.',qc='msie',pc='opera';var _,Nb={},kc={2:1},jc={};Ob(1,-1,jc);_.tM=ic;Ob(7,1,{});_.a=null;Ob(6,7,{});Ob(5,6,{});Ob(4,5,{},p);var o=null;Ob(9,1,{});Ob(8,9,{},t);Ob(17,1,kc);Ob(16,17,kc);Ob(15,16,kc);Ob(14,15,kc,A);_.a=null;Ob(20,1,{});var C=0,D=0,E=-1;Ob(22,20,{},R);_.a=null;_.b=null;var N;Ob(25,1,{},Z);_.c=function $(a){return U(a)};Ob(31,1,{},ab);var eb,fb;Ob(43,1,{},Ub);_.a=0;Ob(44,15,kc,_b);Ob(45,15,kc,bc);Ob(46,1,{},dc);_=String.prototype;_.cM={1:1};var lc=H;var Db=Wb(sc,'Object',1),rb=Wb(tc,'JavaScriptObject$',11),Hb=Wb(sc,'Throwable',17),Bb=Wb(sc,'Exception',16),Eb=Wb(sc,'RuntimeException',15),Fb=Wb(sc,'StackTraceElement',46),Ib=Vb(uc,'StackTraceElement;',47),vb=Wb('com.google.gwt.lang.','SeedUtil',37),Ab=Wb(sc,'Class',43),Gb=Wb(sc,'String',2),Jb=Vb(uc,'String;',48),zb=Wb(sc,'ClassCastException',44),qb=Wb(tc,'JavaScriptException',14),xb=Wb(vc,'UIObject',7),yb=Wb(vc,'Widget',6),wb=Wb(vc,'FocusWidget',5),pb=Wb(wc,'Canvas',4),ob=Wb(wc,'Canvas$CanvasElementSupportDetector',9),nb=Wb(wc,'Canvas$CanvasElementSupportDetectedMaybe',8),ub=Wb(xc,'StackTraceCreator$Collector',25),sb=Wb(tc,'Scheduler',20),tb=Wb(xc,'SchedulerImpl',22),Cb=Wb(sc,'NullPointerException',45);$stats && $stats({moduleName:'automatonizer',sessionId:$sessionId,subSystem:'startup',evtGroup:'moduleStartup',millis:(new Date()).getTime(),type:'moduleEvalEnd'});if ($wnd.automatonizer) $wnd.automatonizer.onScriptLoad();
+--></script></body></html>
