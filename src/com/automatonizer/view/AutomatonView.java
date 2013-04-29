@@ -1,6 +1,6 @@
 package com.automatonizer.view;
 
-import com.automatonizer.presenter.MachinePresenter.Display;
+import com.automatonizer.presenter.AutomatonPresenter.Display;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.dom.client.Style;
@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class MachineView extends Composite implements Display {
+public class AutomatonView extends Composite implements Display {
 
 	private final static int TEXT_BOX_PX_HEIGHT = 30;
 	private final static int CANVAS_PX_HEIGHT = 400;
@@ -21,7 +21,7 @@ public class MachineView extends Composite implements Display {
 	private TextBox textBox;
 	private Canvas canvas;
 
-	public MachineView() {
+	public AutomatonView() {
 		DockLayoutPanel panel = new DockLayoutPanel(Unit.EM);
 		initWidget(panel);
 		canvas = Canvas.createIfSupported();
