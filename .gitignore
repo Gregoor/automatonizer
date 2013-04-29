@@ -1,4 +1,5 @@
 *.class
+*.gwt-log
 
 # Package Files #
 *.jar
