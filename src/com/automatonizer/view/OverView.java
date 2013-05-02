@@ -15,54 +15,36 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
-public class AutomatonView extends Composite implements Display {
+public class OverView extends Composite implements Display {
 
 	private final static int TEXT_BOX_PX_HEIGHT = 30;
-	private final static int CANVAS_PX_HEIGHT = 400;
-	private final static int CANVAS_PX_WIDTH = 800;
 	
 	private Point offset = new Point();
 
 	private TextBox textBox;
-	private Canvas canvas;
+	private AutomatonCanvas automatonView = new AutomatonCanvas();
 
-	public AutomatonView() {
+	public OverView() {
 		DockLayoutPanel panel = new DockLayoutPanel(Unit.EM);
 		initWidget(panel);
-		canvas = Canvas.createIfSupported();
 
 		textBox = new TextBox();
-		if (canvas == null) {
+		if (!automatonView.canvasSupported()) {
 			panel.add(new Label(
 					"Ain't no Canvas support in yo internet entering software. Get some Chrome, bisch."));
 			return;
 		}
 
 		textBox.setWidth("792px");
-		canvas.setWidth(CANVAS_PX_WIDTH+"px");
-		canvas.setCoordinateSpaceHeight(CANVAS_PX_HEIGHT);
-		canvas.setCoordinateSpaceWidth(800);
-		canvas.setHeight(CANVAS_PX_HEIGHT + "px");
-		Style canvasStyle = canvas.getElement().getStyle();
-		canvasStyle.setBorderStyle(BorderStyle.SOLID);
-		canvasStyle.setBorderWidth(1, Unit.PX);
 
-		panel.setHeight(TEXT_BOX_PX_HEIGHT + CANVAS_PX_HEIGHT + "px");
+		panel.setHeight(TEXT_BOX_PX_HEIGHT + AutomatonCanvas.PX_HEIGHT + "px");
 		panel.addSouth(textBox, 2);
-		panel.add(canvas);
-
-		Context2d context = canvas.getContext2d();
-		context.beginPath();
-//		context.fillRect(50, 50, 50, 50);
-		new StateView(new State("Z1"), new Point(50, 50)).go(context);
-		new StateView(new State("Z2"), new Point(150, 150)).go(context);
-		context.fill();
-		context.closePath();
+		panel.add(automatonView);
 	}
 
 	@Override
 	public HasClickHandlers getCanvas() {
-		return canvas;
+		return automatonView;
 	}
 
 	@Override

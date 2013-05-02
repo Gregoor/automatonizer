@@ -1,6 +1,6 @@
 package com.automatonizer.presenter;
 
-import com.automatonizer.view.AutomatonView;
+import com.automatonizer.view.OverView;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -18,7 +18,7 @@ public class AutomatonPresenter implements Presenter {
 	private final Display display;
 	
 	public AutomatonPresenter() {
-		display = new AutomatonView();
+		display = new OverView();
 	}
 
 	@Override
