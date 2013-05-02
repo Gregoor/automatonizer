@@ -1,5 +1,7 @@
 package com.automatonizer.view;
 
+import java.util.ArrayList;
+
 import com.automatonizer.model.State;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -24,6 +26,8 @@ public class AutomatonCanvas extends Composite {
 
 	private final Canvas upmostCanvas = textCanvas;
 
+	private final ArrayList<StateView> stateViews = new ArrayList<StateView>();
+
 	public Point offset = new Point(0, 0);
 
 	public AutomatonCanvas() {
@@ -36,16 +40,20 @@ public class AutomatonCanvas extends Composite {
 		panel.add(objectCanvas);
 		panel.add(textCanvas);
 		initWidget(panel);
+		
+		stateViews.add(new StateView(this, new State("Z1"), 50, 50));
+		stateViews.add(new StateView(this, new State("Z2"), 150, 150));
 	}
 
 	public void draw() {
 		clearCanvas(gridCanvas);
 		clearCanvas(objectCanvas);
 		clearCanvas(textCanvas);
+		
 		drawGrid();
-
-		new StateView(this, new State("Z1"), new Point(50, 50)).go();
-		new StateView(this, new State("Z2"), new Point(150, 150)).go();
+		for (StateView stateView : stateViews) {
+			stateView.draw();
+		}
 	}
 
 	public boolean canvasSupported() {
@@ -65,17 +73,21 @@ public class AutomatonCanvas extends Composite {
 		return upmostCanvas;
 	}
 
+	public ArrayList<StateView> getStateViews() {
+		return stateViews;
+	}
+
 	private void drawGrid() {
 		Context2d ctx = gridCanvas.getContext2d();
 
-		for (int x0 = calcGridOffset(offset.getX()); x0 < PX_HEIGHT; x0 += GRID_SIZE) {
-			ctx.moveTo(0, x0);
-			ctx.lineTo(PX_WIDTH, x0);
+		for (int x0 = calcGridOffset(offset.getX()); x0 < PX_WIDTH; x0 += GRID_SIZE) {
+			ctx.moveTo(x0, 0);
+			ctx.lineTo(x0, PX_HEIGHT);
 		}
 
-		for (int y0 = calcGridOffset(offset.getY()); y0 < PX_WIDTH; y0 += GRID_SIZE) {
-			ctx.moveTo(y0, 0);
-			ctx.lineTo(y0, PX_HEIGHT);
+		for (int y0 = calcGridOffset(offset.getY()); y0 < PX_HEIGHT; y0 += GRID_SIZE) {
+			ctx.moveTo(0, y0);
+			ctx.lineTo(PX_WIDTH, y0);
 		}
 
 		ctx.setLineWidth(.5);
@@ -84,15 +96,16 @@ public class AutomatonCanvas extends Composite {
 	}
 
 	private int calcGridOffset(double d) {
-		int b = GRID_SIZE;
-		return Math.round((int) (d == 0 ? d : (b % d + d) % d) / 2);
+		return 0;
+		// TODO: If we want a moving grid, this needs to be debugged
+		// return Math.round((int) ((d == 0 ? d : (GRID_SIZE % d + d) % d) *
+		// .9));
 	}
 
 	private void initCanvas(Canvas canvas) {
-		canvas.setWidth(PX_WIDTH + "px");
+		canvas.setSize(PX_WIDTH + "px", PX_HEIGHT + "px");
 		canvas.setCoordinateSpaceHeight(PX_HEIGHT);
 		canvas.setCoordinateSpaceWidth(800);
-		canvas.setHeight(PX_HEIGHT + "px");
 		Style canvasStyle = canvas.getElement().getStyle();
 		canvasStyle.setBorderStyle(BorderStyle.SOLID);
 		canvasStyle.setBorderWidth(1, Unit.PX);
