@@ -11,6 +11,6 @@ public class Automatonizer implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		new AutomatonPresenter().go(RootPanel.get());
+		new AutomatonPresenter(RootPanel.get());
 	}
 }

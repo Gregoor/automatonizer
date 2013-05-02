@@ -25,9 +25,9 @@ public class StateView {
 		textCtx.setFillStyle("black");
 		textCtx.setFont("16px Arial");
 		TextMetrics metrics = textCtx.measureText(state.getIdentifier());
-		textCtx.fillText(state.getIdentifier(),
-				position.getX() - metrics.getWidth() / 2, position.getY()
-						+ textCtx.measureText("M").getWidth() / 2);
+		textCtx.fillText(state.getIdentifier(), getWorldPosition().getX()
+				- metrics.getWidth() / 2, getWorldPosition().getY()
+				+ textCtx.measureText("M").getWidth() / 2);
 	}
 
 	public State getState() {
@@ -42,11 +42,16 @@ public class StateView {
 		this.position = position;
 	}
 
+	private Point getWorldPosition() {
+		return position.plus(canvas.offset);
+	}
+
 	private void drawCircle(int radius, String color) {
 		Context2d ctx = canvas.getObjectContext();
 		ctx.beginPath();
 		ctx.setFillStyle(color);
-		ctx.arc(position.getX(), position.getY(), radius, 0, 2 * Math.PI);
+		ctx.arc(getWorldPosition().getX(), getWorldPosition().getY(), radius,
+				0, 2 * Math.PI);
 		ctx.fill();
 		ctx.closePath();
 	}
