@@ -6,8 +6,10 @@
 *.war
 
 # gwt caches and compiled units #
-war/gwt_bree/
+war/automatonizer/
+war/chrome-test/*
 gwt-unitCache/
+test-classes/
 
 # boilerplate generated classes #
 .apt_generated/
