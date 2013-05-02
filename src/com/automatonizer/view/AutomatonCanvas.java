@@ -59,7 +59,7 @@ public class AutomatonCanvas extends Composite {
 	public Context2d getTextContext() {
 		return textCanvas.getContext2d();
 	}
-	
+
 	// We need to attach the handlers to the upmost canvas
 	public HasAllMouseHandlers getHandlerCanvas() {
 		return upmostCanvas;
@@ -67,22 +67,25 @@ public class AutomatonCanvas extends Composite {
 
 	private void drawGrid() {
 		Context2d ctx = gridCanvas.getContext2d();
-		int x = (int) offset.getX();
-		int y = (int) offset.getY();
 
-		for (int i = (x == 0 ? x : GRID_SIZE % x); i < PX_HEIGHT; i += GRID_SIZE) {
-			ctx.moveTo(0, i);
-			ctx.lineTo(PX_WIDTH, i);
+		for (int x0 = calcGridOffset(offset.getX()); x0 < PX_HEIGHT; x0 += GRID_SIZE) {
+			ctx.moveTo(0, x0);
+			ctx.lineTo(PX_WIDTH, x0);
 		}
 
-		for (int i = (y == 0 ? y : GRID_SIZE % y); i < PX_WIDTH; i += GRID_SIZE) {
-			ctx.moveTo(i, 0);
-			ctx.lineTo(i, PX_HEIGHT);
+		for (int y0 = calcGridOffset(offset.getY()); y0 < PX_WIDTH; y0 += GRID_SIZE) {
+			ctx.moveTo(y0, 0);
+			ctx.lineTo(y0, PX_HEIGHT);
 		}
 
 		ctx.setLineWidth(.5);
 		ctx.setStrokeStyle("grey");
 		ctx.stroke();
+	}
+
+	private int calcGridOffset(double d) {
+		int b = GRID_SIZE;
+		return Math.round((int) (d == 0 ? d : (b % d + d) % d) / 2);
 	}
 
 	private void initCanvas(Canvas canvas) {
@@ -94,7 +97,7 @@ public class AutomatonCanvas extends Composite {
 		canvasStyle.setBorderStyle(BorderStyle.SOLID);
 		canvasStyle.setBorderWidth(1, Unit.PX);
 	}
-	
+
 	private void clearCanvas(Canvas canvas) {
 		canvas.setCoordinateSpaceWidth(PX_WIDTH);
 	}
