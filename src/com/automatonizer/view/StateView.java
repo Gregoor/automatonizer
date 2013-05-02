@@ -39,8 +39,8 @@ public class StateView {
 	 * Based on this SO-answer: http://stackoverflow.com/a/7227057/1501916
 	 */
 	public boolean inRadius(int x, int y) {
-		int dx = (int) Math.abs(x - position.getX());
-		int dy = (int) Math.abs(y - position.getY());
+		int dx = (int) Math.abs(x - getWorldPosition().getX());
+		int dy = (int) Math.abs(y - getWorldPosition().getY());
 
 		if (dx > RADIUS || dy > RADIUS) return false;
 		if (dx + dy <= RADIUS
@@ -58,7 +58,7 @@ public class StateView {
 	}
 
 	public void setPosition(Point position) {
-		this.position = position;
+		this.position = position.minus(canvas.offset);
 	}
 
 	private Point getWorldPosition() {
