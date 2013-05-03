@@ -5,14 +5,15 @@ import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.canvas.dom.client.TextMetrics;
 import com.google.gwt.touch.client.Point;
 
-public class StateView {
+public class StateView implements View {
 
-	private static final int RADIUS = 30;
-	private final State state;
+	public static final int RADIUS = 30;
+	public final State state;
+
+	public Point position;
 	private AutomatonCanvas canvas;
-	private Point position;
 
-	public StateView(AutomatonCanvas canvas, State state, double x, double y) {
+	public StateView(AutomatonCanvas canvas, State state, int x, int y) {
 		this(canvas, state, new Point(x, y));
 	}
 
@@ -22,6 +23,7 @@ public class StateView {
 		this.position = position;
 	}
 
+	@Override
 	public void draw() {
 		drawCircle(RADIUS, "black");
 		drawCircle(RADIUS - 2, "white");
@@ -49,19 +51,11 @@ public class StateView {
 		return false;
 	}
 
-	public State getState() {
-		return state;
+	public void setWorldPosition(Point worldPosition) {
+		position = worldPosition.minus(canvas.offset);
 	}
 
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setPosition(Point position) {
-		this.position = position.minus(canvas.offset);
-	}
-
-	private Point getWorldPosition() {
+	public Point getWorldPosition() {
 		return position.plus(canvas.offset);
 	}
 

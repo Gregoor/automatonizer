@@ -21,9 +21,9 @@
 	<entry-point class='com.automatonizer.main.Automatonizer' />
 
 	<!-- Specify the paths for translatable code -->
-	<source path="main"/>
-	<source path="model"/>
-	<source path="presenter"/>
-	<source path="view"/>
-	
+	<source path="main" />
+	<source path="model" />
+	<source path="presenter" />
+	<source path="view" />
+
 </module>

@@ -1,7 +1,11 @@
 package com.automatonizer.view;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
+import com.automatonizer.model.Relation;
 import com.automatonizer.model.State;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
@@ -17,19 +21,20 @@ public class AutomatonCanvas extends Composite {
 
 	public final static int PX_HEIGHT = 400;
 	public final static int PX_WIDTH = 800;
+	
+	public final HashMap<State, StateView> stateViewMap = new HashMap<State, StateView>();
+	public Point offset = new Point(0, 0);
 
+	
 	private final static int GRID_SIZE = 20;
 
 	private final Canvas gridCanvas = Canvas.createIfSupported();
 	private final Canvas objectCanvas = Canvas.createIfSupported();
 	private final Canvas textCanvas = Canvas.createIfSupported();
-
 	private final Canvas upmostCanvas = textCanvas;
 
-	private final ArrayList<StateView> stateViews = new ArrayList<StateView>();
-
-	public Point offset = new Point(0, 0);
-
+	private final ArrayList<RelationView> relationViews = new ArrayList<RelationView>();
+	
 	public AutomatonCanvas() {
 		initCanvas(gridCanvas);
 		initCanvas(objectCanvas);
@@ -41,8 +46,13 @@ public class AutomatonCanvas extends Composite {
 		panel.add(textCanvas);
 		initWidget(panel);
 		
-		stateViews.add(new StateView(this, new State("Z1"), 50, 50));
-		stateViews.add(new StateView(this, new State("Z2"), 150, 150));
+		State temp1, temp2;
+		temp1 = new State("Z1");
+		stateViewMap.put(temp1, new StateView(this, temp1, 50, 50));
+		temp2 = new State("Z2");
+		stateViewMap.put(temp2, new StateView(this, temp2, 150, 150));
+	
+		relationViews.add(new RelationView(this, new Relation(temp1, temp2, "a")));
 	}
 
 	public void draw() {
@@ -51,8 +61,11 @@ public class AutomatonCanvas extends Composite {
 		clearCanvas(textCanvas);
 		
 		drawGrid();
-		for (StateView stateView : stateViews) {
-			stateView.draw();
+		for (RelationView relationView : relationViews) {
+			relationView.draw();
+		}
+		for (Map.Entry<State, StateView> entry : stateViewMap.entrySet()) {
+			entry.getValue().draw();
 		}
 	}
 
@@ -73,8 +86,8 @@ public class AutomatonCanvas extends Composite {
 		return upmostCanvas;
 	}
 
-	public ArrayList<StateView> getStateViews() {
-		return stateViews;
+	public Collection<StateView> getStateViews() {
+		return stateViewMap.values();
 	}
 
 	private void drawGrid() {

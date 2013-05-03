@@ -2,26 +2,21 @@ package com.automatonizer.model;
 
 public class Relation {
 	
-	private final State stateFrom;
-	private final State stateTo;
-	private final String symbol;
+	public final State stateFrom;
+	public final State stateTo;
+	public final String symbol;
 	
 	public Relation(State stateFrom, State stateTo, String symbol) {
 		this.stateFrom = stateFrom;
 		this.stateTo = stateTo;
 		this.symbol = symbol;
+		
+		if (stateFrom == null || stateTo == null) {
+			throw new IllegalArgumentException("Relation can't be build on null states.");
+		}
+		if (stateFrom == stateTo) {
+			throw new IllegalArgumentException("States can't be equal.");
+		}
 	}
 
-	public State getStateFrom() {
-		return stateFrom;
-	}
-
-	public State getStateTo() {
-		return stateTo;
-	}
-
-	public String getSymbol() {
-		return symbol;
-	}
-	
 }

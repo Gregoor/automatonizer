@@ -77,7 +77,8 @@ public class AutomatonPresenter {
 
 					lastPosition = new Point(event.getX(), event.getY());
 				} else if (moveState != null) {
-					moveState.setPosition(new Point(event.getX(), event.getY()));
+					moveState.setWorldPosition(new Point(event.getX(), event
+							.getY()));
 
 					overView.draw();
 				}
