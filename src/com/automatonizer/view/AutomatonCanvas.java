@@ -46,13 +46,18 @@ public class AutomatonCanvas extends Composite {
 		panel.add(textCanvas);
 		initWidget(panel);
 		
-		State temp1, temp2;
-		temp1 = new State("Z1");
-		stateViewMap.put(temp1, new StateView(this, temp1, 50, 50));
-		temp2 = new State("Z2");
-		stateViewMap.put(temp2, new StateView(this, temp2, 150, 150));
+		State z1, z2, z3;
+		z1 = new State("Z1");
+		stateViewMap.put(z1, new StateView(this, z1, 50, 50));
+		z2 = new State("Z2");
+		stateViewMap.put(z2, new StateView(this, z2, 150, 150));
+		z3 = new State("Z3");
+		stateViewMap.put(z3, new StateView(this, z3, 250, 150, true));
+		
 	
-		relationViews.add(new RelationView(this, new Relation(temp1, temp2, "a")));
+		relationViews.add(new RelationView(this, new Relation(z1, z2, "a")));
+		relationViews.add(new RelationView(this, new Relation(z2, z3, "a")));
+		relationViews.add(new RelationView(this, new Relation(z1, z3, "b")));
 	}
 
 	public void draw() {

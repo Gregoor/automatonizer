@@ -11,22 +11,36 @@ public class StateView implements View {
 	public final State state;
 
 	public final Vector position;
+	private final boolean endState;
 	private AutomatonCanvas canvas;
 
 	public StateView(AutomatonCanvas canvas, State state, int x, int y) {
 		this(canvas, state, new Vector(x, y));
 	}
-
+	
+	public StateView(AutomatonCanvas canvas, State state, int x, int y, boolean endState) {
+		this(canvas, state, new Vector(x, y), endState);
+	}
+	
 	public StateView(AutomatonCanvas canvas, State state, Vector position) {
+		this(canvas, state, position, false);
+	}
+
+	public StateView(AutomatonCanvas canvas, State state, Vector position, boolean endState) {
 		this.canvas = canvas;
 		this.state = state;
 		this.position = position;
+		this.endState = endState;
 	}
 
 	@Override
 	public void draw() {
 		drawCircle(RADIUS, "black");
 		drawCircle(RADIUS - 2, "white");
+		if (endState) {
+			drawCircle(RADIUS - 4, "black");
+			drawCircle(RADIUS - 6, "white");
+		}
 
 		Context2d textCtx = canvas.getTextContext();
 		textCtx.setFillStyle("black");
