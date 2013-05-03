@@ -1,5 +1,6 @@
 package com.automatonizer.presenter;
 
+import com.automatonizer.model.Vector;
 import com.automatonizer.view.AutomatonCanvas;
 import com.automatonizer.view.OverView;
 import com.automatonizer.view.StateView;
@@ -18,7 +19,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 public class AutomatonPresenter {
 
 	private boolean moveCanvas = false;
-	private Point lastPosition;
+	private Vector lastPosition;
 
 	private StateView moveState;
 
@@ -67,18 +68,16 @@ public class AutomatonPresenter {
 			public void onMouseMove(MouseMoveEvent event) {
 				if (moveCanvas) {
 					if (lastPosition != null) {
-						double x = event.getX() - lastPosition.getX();
-						double y = event.getY() - lastPosition.getY();
-						automatonView.offset = automatonView.offset
-								.plus(new Point(x, y));
+						double x = event.getX() - lastPosition.x;
+						double y = event.getY() - lastPosition.y;
+						automatonView.offset.plus(x, y);
 
 						overView.draw();
 					}
 
-					lastPosition = new Point(event.getX(), event.getY());
+					lastPosition = new Vector(event.getX(), event.getY());
 				} else if (moveState != null) {
-					moveState.setWorldPosition(new Point(event.getX(), event
-							.getY()));
+					moveState.setWorldPosition(event.getX(), event.getY());
 
 					overView.draw();
 				}
